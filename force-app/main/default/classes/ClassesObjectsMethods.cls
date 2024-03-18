@@ -40,17 +40,23 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<String> practiceStringMethods() {
         // Initialize a String with 'Hello, Salesforce!'
-        
-        // Get the length of the String        
+        String myString = 'Hello, Salesforce!';
+        // Get the length of the String
+        String strLength = String.valueOf(myString.length());        
         // Get a substring of the String of the first 5 characters
+        String substring = myString.substring(0, 5);
         // Convert the String to lower case
-        
+        String strLowCase = myString.toLowerCase();
         // Return the list with the string data
+        List<String> stringData = new List<String>();
         // In the first position add the string length
+        stringData.add(strLength);
         // In the second position add the substring
+        stringData.add(substring);
         // In the third position add the string in lower case
+        stringData.add(strLowCase);
 
-        return null; // Replace null with the variable you used to store the result
+        return stringData;
     }
 
     /**
@@ -62,14 +68,14 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Boolean> checkStringContent(String input) {
         // Initialize a list to store the results
-        
+        List<Boolean> checkResult = new List<Boolean>();
         // Check if the string starts with 'Sales'
-        
+        checkResult.add(input.startsWith('Sales'));
         // Check if the string ends with 'Force'
-        
+        checkResult.add(input.endsWith('Force'));
         // Check if the string contains 'Awesome'
-        
-        return null; // Replace null with the variable you used to store the result
+        checkResult.add(input.contains('Awesome'));
+        return checkResult;
     }
 
     /**
