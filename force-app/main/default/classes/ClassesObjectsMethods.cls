@@ -117,7 +117,7 @@ public with sharing class ClassesObjectsMethods {
         for (String chr: str.split('')) {
             // get individual characters from the string - hint use substring or split
             // check if the character is a vowel
-            if (vowels.contains(chr)) {
+            if (vowels.contains(chr.toLowerCase())) {
                 // if it is a vowel, increment the result Integer
                 result++;
             }
@@ -138,16 +138,20 @@ public with sharing class ClassesObjectsMethods {
         List<String> scientistNames = new List<String>{'Tim Berners-Lee', 'Alan Turing', 'Grace Hopper', 'Donald Knuth', 'Guido van Rossum', 'Ken Thompson', 'Stephen Hawking'};
 
         // The variable to store the concatenated string
-
+        String scientistsWithG = '';
         // Loop through the list of scientists' names
-
+        for (String scientist : scientistNames) {
             // If the name doesn't contain the letter 'G', skip this iteration
-
+            if (!scientist.toLowerCase().contains('g')) {
+                continue;
+            }
             // Add the name to the result string, followed by a comma
-
+            scientistsWithG += scientist + ',';
+        }
         // Remove the last comma from the result string
+        scientistsWithG = scientistsWithG.removeEnd(',');
 
-        return null; // Replace null with the variable you used to store the result
+        return scientistsWithG;
     }
 
     /**
