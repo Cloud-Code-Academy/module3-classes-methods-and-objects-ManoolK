@@ -26,7 +26,7 @@
  * Math class: https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_math.htm
  * Classes: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_understanding.htm
  *
- * @author Your Name
+ * @author Oxana Suvorova
  */
 
 public with sharing class ClassesObjectsMethods {
@@ -87,15 +87,19 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String removeDuplicateWords(String sentence) {
         // Split the sentence into words
-
+        List<String> words = sentence.split(' ');
         // Create a set to store the unique words
-
+        Set<String> uniqueWords = new Set<String>();
         // Add each word to the set
-
+        uniqueWords.addAll(words);
         // Join the unique words back into a sentence
+        // Variant 1: works for ApiVersion 58+
+        // String newSentence = String.join(uniqueWords, ' ');
 
+        // Variant 2: works for all ApiVersions
+        String newSentence = String.join(new List<String>(uniqueWords), ' ');
         // Return the sentence with unique words
-        return null; // Replace null with the variable you used to store the result
+        return newSentence;
     }
 
     /**
@@ -108,16 +112,18 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer countVowels(String str) {
         // Initialize the result Integer
-
-        /*
-        for () {
+        Integer result = 0;
+        List<String> vowels = new List<String>{'a', 'e', 'i', 'o', 'u'};
+        for (String chr: str.split('')) {
             // get individual characters from the string - hint use substring or split
             // check if the character is a vowel
-            // if it is a vowel, increment the result Integer
+            if (vowels.contains(chr)) {
+                // if it is a vowel, increment the result Integer
+                result++;
+            }
         }
-        */
 
-        return null; // Replace null with the variable you used to store the result
+        return result;
     }
 
     /**
