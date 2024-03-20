@@ -94,10 +94,9 @@ public with sharing class ClassesObjectsMethods {
         uniqueWords.addAll(words);
         // Join the unique words back into a sentence
         // Variant 1: works for ApiVersion 58+
-        // String newSentence = String.join(uniqueWords, ' ');
-
-        // Variant 2: works for all ApiVersions
-        String newSentence = String.join(new List<String>(uniqueWords), ' ');
+        String newSentence = String.join(uniqueWords, ' ');
+        // Variant 2: works for previous ApiVersions
+        //String newSentence = String.join(new List<String>(uniqueWords), ' ');
         // Return the sentence with unique words
         return newSentence;
     }
