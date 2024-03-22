@@ -197,20 +197,22 @@ public with sharing class ClassesObjectsMethods {
      * @param dt the current date and time
      * @return The number of the day of the week for the given date.
      */
-    // public static String getDayOfWeek(DateTime dt) {
-    //     // Define a map of day of the week as a key and day number as the value
-    //     // Monday = 1, Tuesday = 2, etc.
-    //     Map<String, String> numberOfWeekDayByName = new Map<String, String>{
-    //         'Monday' => '1', 'Tuesday' => '2', 'Wednesday' => '3', 'Thursday' => '4',
-    //         'Friday' => '5', 'Saturday' => '6', 'Sunday' => '7'
-    //     };
-    //     // Get the day name using .format('EEEE');
-    //     String weekDayName = dt.format('EEEE');
-    //     // Get the day number from the map using the day name
-    //     String weekDayNum = numberOfWeekDayByName.get(weekDayName);
-    //     // Return the result as a string
-    //     return weekDayNum;
-    // }
+    /*
+    public static String getDayOfWeek(DateTime dt) {
+        // Define a map of day of the week as a key and day number as the value
+        // Monday = 1, Tuesday = 2, etc.
+        Map<String, String> numberOfWeekDayByName = new Map<String, String>{
+            'Monday' => '1', 'Tuesday' => '2', 'Wednesday' => '3', 'Thursday' => '4',
+            'Friday' => '5', 'Saturday' => '6', 'Sunday' => '7'
+        };
+        // Get the day name using .format('EEEE');
+        String weekDayName = dt.format('EEEE');
+        // Get the day number from the map using the day name
+        String weekDayNum = numberOfWeekDayByName.get(weekDayName);
+        // Return the result as a string
+        return weekDayNum;
+    }
+    */
 
     // Question 9, Variant 2
     public static String getDayOfWeek(DateTime dt) {
@@ -312,20 +314,41 @@ public with sharing class ClassesObjectsMethods {
      */
     public class Person {
         // Declare private two instance variables - (TEXT) name and (Number) age
-        
+        private String name;
+        private Integer age;
+
         // Constructor to initialize the name and age
-    
+        public Person(String name, Integer age) {
+            this.name = name;
+            this.age = age;
+        }
+
         // Method introduceYourself that returns the details of the person        
         // Return a string in the format "Hello, my name is <name> and I am <age> years old."
         // For example, introduceYourself() should return a string like "Hello, my name is John Doe and I am 28 years old."
+        public String introduceYourself() {
+            return 'Hello, my name is ' + this.name + ' and I am ' + this.age + ' years old.';
+        }
 
         // Getter method that returns the name of the person
+        public String getName() {
+            return this.name;
+        }
 
         // Getter method that returns the age of the person
+        public Integer getAge() {
+            return this.age;
+        }
 
         // Setter method that sets the name of the person
+        public void setName(String name) {
+            this.name = name;
+        }
 
         // Setter method that sets the age of the person
+        public void setAge(Integer age) {
+            this.age = age;
+        }
     }
 
     /**
@@ -339,14 +362,14 @@ public with sharing class ClassesObjectsMethods {
         List<String> results = new List<String>();
         // Create a new instance of Person class
         // Name the person 'John Doe' and set the age to 28
-
+        Person newPerson = new Person('John Doe', 28);
         // Add the details of the person using the introduceYourself method
-
+        results.add(newPerson.introduceYourself());
         // Get the name of the person using the getter method and add it to the list
-
+        results.add(newPerson.getName());
         // Get the age of the person using the getter method and add it to the list
-        
-        return null; // Replace null with the variable you used to store the result
+        results.add(String.valueOf(newPerson.getAge()));
+        return results;
     }
 
     /**
@@ -358,9 +381,9 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Person createPerson(String name, Integer age) {
         // Create a new instance of the Person class using the provided name and age
-        
+        Person newPerson = new Person(name, age);
         // Return the new instance of the Person class
-        return null; // Replace null with the variable you used to store the result
+        return newPerson;
     }
 
     /**
@@ -373,15 +396,15 @@ public with sharing class ClassesObjectsMethods {
      * @return A list of new Person objects.
      */
     public static List<Person> createMultiplePersons(List<String> names, Integer age) {
-
+        List<Person> persons = new List<Person>();
         // Loop through each name in the provided list of names
+        for (String name : names) {
             // Create a new Person object for each name
-            
             // Add the new Person object to the list of Person objects
-        
-        
+            persons.add(new Person(name, age));
+        }
         // Return the list of Person objects
-        return null; // Replace null with the variable you used to store the result
+        return persons;
     }
 
 
@@ -396,6 +419,9 @@ public with sharing class ClassesObjectsMethods {
      * @return The Person object of the older person.
      */
     public static Person getOlderPerson(Person person1, Person person2) {
-        return null; // Replace null with the variable you used to store the result
+        if (person1.getAge() >= person2.getAge()) {
+            return person1;
+        }
+        return person2;
     }
 }
